@@ -1,0 +1,222 @@
+disabled_rules: # rule identifiers to exclude from running
+  - colon
+  - comma
+  - control_statement
+  - todo
+  - valid_docs
+# - trailing_whitespace # no need to be used. Go to Xcode's preferrences -> Text Editing, and under While editing select following: Automatically trim trailing whitespace and including whitespace-only
+
+opt_in_rules: # some rules are only opt-in
+  # Find all the available rules by running:
+  # swiftlint rules
+  - forced_unwrapping
+  - private_outlet
+  - switch_case_on_newline
+  - force_unwrapping
+  - vertical_whitespace
+  - empty_count
+  - closure_end_indentation
+  - closure_spacing
+  - explicit_init
+  - first_where
+  - nimble_operator
+  - number_separator
+  - object_literal
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+
+included: # paths to include during linting. `--path` is ignored if present.
+  - NewsFeedApp
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Tesco Ireland/Supporting Files/AppDelegate.swift
+  - Pods
+#  - Source/rningExcludedFolder
+#  - Source/ExcludedFile.swift
+#  - R.generated.swift
+
+# configurable rules can be customized from this configuration file
+# binary rules can set their severity level
+force_cast: warning # implicitly
+
+force_try:
+  severity: warning # explicitly
+force_try: warning
+empty_count: warning
+
+# rules that have both warning and error levels, can set just the warning level
+# implicitly
+line_length:
+  - 201 # warning
+  - 250 # error
+
+# Function Rules
+function_body_length:
+min_length:
+    warninig: 1
+    error: 0
+max_length:
+    warninig: 50 
+    error: 100
+
+function_parameter_count:
+  - 6
+  - 8
+
+# they can set both implicitly with an array
+type_body_length:
+  - 300 # warning
+  - 400 # error
+
+# or they can set both explicitly
+file_length:
+  warning: 500
+  error: 800
+
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+type_name:
+  min_length: 3 # only warning
+  max_length: # warning and error
+    warning: 35
+    error: 40
+  excluded: iPhone # excluded via string
+
+identifier_name:
+  min_length: # only min_length
+    error: 3 # only error
+  max_length: # warning and error
+    warning: 35
+    error: 40
+  excluded: # excluded via string array
+    - id
+    - URL
+    - GlobalAPIKey
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
+
+# Custom Define Rules
+custom_rules:
+  double_space:
+    include: "*.swift"
+    name: "Double space"
+    regex: "([a-z,A-Z] \\s+)"
+    message: "Double space between keywords"
+    match_kinds: keyword
+    severity: warning
+  boolean_operators_end_of_line:
+    include: "*.swift"
+    name: "Boolean Operators"
+    regex: "((?:&&|\\|\\|)$)"
+    message: "Boolean operators should not be at the end of line"
+    severity: warning
+  explicit_failure_calls:
+    name: "Avoid asserting 'false'"
+    regex: "((assert|precondition)\\(false)"
+    message: "Use assertionFailure() or preconditionFailure() instead."
+    severity: warning
+  multiple_empty_lines:
+    name: "Multiple Empty Lines"
+    regex: "((?:\\s*\n){3,})"
+    message: "There are too many line breaks"
+    severity: warning
+  marks_style:
+    name: "Marks"
+    regex: "(//?[ ]MARK: -?[a-zA-Z0-9] | //?[ ]MARK: ?[a-zA-Z0-9] )"
+    message: "Marks should follow the following structure: // MARK: - Comment."
+    severity: warning
+  comments_space:
+    name: "Space After Comment"
+    regex: "(^ *//(?!(MARK|TODO))\\w+)"
+    message: "There should be a space after //"
+    severity: warning
+  unnecessary_type:
+    name: "Unnecessary Type"
+    regex: "[ a-zA-Z0-9]*(?:let|var) [ a-zA-Z0-9]*: ([a-zA-Z0-9]*)[\\? ]*= \\1\\("
+    message: "Type Definition Not Needed"
+    severity: warning
+    # ex:
+    #  - KO: let type: Type = Type()
+    #  - OK: let type: Type = Type.staticVar
+  # class_func:
+  #   name: "class func usage"
+  #   regex: "^\s*class\s+func\s+"
+disable:
+    name: "Disable Rule In Code"
+    regex: '(swiftlint:disable)'
+    message: "Please do not disable rule in code. "
+    severity: error
+    match_kinds: comment
+outlet:
+    name: "outlet"
+    regex: '(@IBOutlet\s*(?!private(set)*\s*weak)\w*\s+var)'
+    message: "IBOutlet must be private(set) weak. "
+    severity: error
+outlet_collection:
+    name: "outlet_collection"
+    regex: '(@IBOutletCollection)'
+    message: "IBOutletCollection is not permitted. "
+    severity: error
+delegate:
+    name: "delegate"
+    regex: '(\s{2,}var\s+delegate)'
+    message: "Please use `weak` for `delegate`. "
+    severity: error
+comments_space:
+    name: "Space After Comment"
+    regex: '(^\s*//\w+)'
+    message: "There should be a space after //"
+    severity: warning
+    match_kinds: comment
+multiple_empty_lines:
+    name: "Multiple Empty Lines"
+    regex: '((?:\s*\n){3,})'
+    message: "There are too many line breaks"
+    severity: warning
+empty_line:
+    name: "Empty Line"
+    regex: '(\}\n[ \t]*([ \t]|class|static|dynamic|@objc|@IBAction|override|private|public|internal)*func)'
+    message: "Must have an empty line between functions. "
+    severity: warning
+switch_enum:
+    name: "Switch Enum"
+    regex: '(case\s\w+\.+rawValue:)'
+    message: "Don't use enum.rawValue in switch-case. Please convert value to enum first. "
+    severity: warning
+compile_lookup:
+    name: "Compile Lookup"
+    regex: '((var|let)\s+\w+\s*=\s*\[)'
+    message: "You need to give types to the array and dictionary. "
+    severity: error
+weak_self_usage:
+    name: "Weak Self Usage"
+    regex: '(self\?\.)'
+    message: "Explicitly extending lifetime is preferred to optional binding. Ex: `guard let this = self else { return }`. "
+    severity: warning
+weak_self_binding:
+    name: "Weak Self Binding"
+    regex: '(let\s+(?!this)\w+\s*=\s*self[,\s])'
+    message: "Please use `let this = self` instead. "
+    severity: warning
+unowned:
+    name: "Unowned"
+    regex: '(unowned)'
+    message: "Please use `weak` instead. "
+    severity: error
+empty_string:
+    name: "Empty String"
+    regex: '(.length\s*(==|!=|<|<=|>|>=)\s*0)'
+    message: "Please use `isEmpty` instead. "
+    severity: error
+bracket:
+    name: "Bracket"
+    regex: '(\}\n{2,}\}|\{\n{2,}\{)'
+    message: "No empty line between two open or close brackets. "
+    severity: warning
+query_string:
+    name: "Query String"
+    regex: '(\s+[=!><]+ \\\(.*\))'
+    message: "Donot use the string interpolation syntax for query string. "
+    severity: warning
