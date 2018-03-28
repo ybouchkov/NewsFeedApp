@@ -9,6 +9,8 @@ target 'NewsFeedApp' do
   pod 'SwiftLint'                                     # A tool to enforce Swift style and conventions. https://realm.io
   pod 'R.swift'
   pod 'IQKeyboardManager'
+  pod 'Alamofire'
+  pod 'SWRevealViewController', :inhibit_warnings => true
 
   target 'NewsFeedAppTests' do
     inherit! :search_paths

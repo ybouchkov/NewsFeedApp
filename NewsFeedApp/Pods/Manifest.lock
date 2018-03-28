@@ -1,21 +1,27 @@
 PODS:
+  - Alamofire (4.7.0)
   - IQKeyboardManager (5.0.8)
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
   - SwiftLint (0.25.0)
+  - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
+  - Alamofire
   - IQKeyboardManager
   - R.swift
   - SwiftLint
+  - SWRevealViewController
 
 SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
 
-PODFILE CHECKSUM: 5d094e763866aa317df63c426aa99fcf0575dc18
+PODFILE CHECKSUM: 928681d73473c2ec4f4c35ee920a90f75a33718a
 
 COCOAPODS: 1.4.0

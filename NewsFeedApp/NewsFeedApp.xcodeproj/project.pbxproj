@@ -16,6 +16,8 @@
 		3799B2FC206BCB8F00730E85 /* NewsFeedAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3799B2FB206BCB8F00730E85 /* NewsFeedAppUITests.swift */; };
 		37D4022A206BCCF600519DC9 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D40229206BCCF600519DC9 /* ArticlesViewController.swift */; };
 		37D40235206BCE9600519DC9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D40234206BCE9600519DC9 /* R.generated.swift */; };
+		37D4023C206BE61600519DC9 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D4023B206BE61600519DC9 /* UITableView+.swift */; };
+		37D4023F206BE64500519DC9 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D4023E206BE64500519DC9 /* UIColor+.swift */; };
 		898D9222CFF8A203ADC6E03A /* Pods_NewsFeedAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1071866D62E3C02D38C24D13 /* Pods_NewsFeedAppUITests.framework */; };
 		AB5DD46DFA37336741B31C0D /* Pods_NewsFeedAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8395404AEDC7EDAF24706173 /* Pods_NewsFeedAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,8 @@
 		3799B2FD206BCB8F00730E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37D40229206BCCF600519DC9 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		37D40234206BCE9600519DC9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		37D4023B206BE61600519DC9 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		37D4023E206BE64500519DC9 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		8395404AEDC7EDAF24706173 /* Pods_NewsFeedAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsFeedAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D347365B6A8F3E94C182CA27 /* Pods_NewsFeedApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsFeedApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C756FAFB673969B0AE270D /* Pods-NewsFeedAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeedAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeedAppUITests/Pods-NewsFeedAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +139,10 @@
 				3799B2E7206BCB8F00730E85 /* Info.plist */,
 				37D40228206BCCCA00519DC9 /* Storyboards */,
 				37D4022B206BCCFB00519DC9 /* ViewControllers */,
+				37D40242206BE69400519DC9 /* Cells */,
+				37D40241206BE67B00519DC9 /* Networking */,
+				37D40240206BE66C00519DC9 /* Models */,
+				37D4023D206BE61B00519DC9 /* Extensions */,
 			);
 			path = NewsFeedApp;
 			sourceTree = "<group>";
@@ -172,6 +180,36 @@
 				37D40229206BCCF600519DC9 /* ArticlesViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		37D4023D206BE61B00519DC9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				37D4023B206BE61600519DC9 /* UITableView+.swift */,
+				37D4023E206BE64500519DC9 /* UIColor+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		37D40240206BE66C00519DC9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		37D40241206BE67B00519DC9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		37D40242206BE69400519DC9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		839EB88B0D494FB3F9915AFB /* Frameworks */ = {
@@ -332,13 +370,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NewsFeedApp/Pods-NewsFeedApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SWRevealViewController/SWRevealViewController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWRevealViewController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -510,8 +552,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				37D4022A206BCCF600519DC9 /* ArticlesViewController.swift in Sources */,
+				37D4023C206BE61600519DC9 /* UITableView+.swift in Sources */,
 				3799B2DC206BCB8F00730E85 /* AppDelegate.swift in Sources */,
 				37D40235206BCE9600519DC9 /* R.generated.swift in Sources */,
+				37D4023F206BE64500519DC9 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
