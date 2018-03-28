@@ -6,6 +6,7 @@ PODS:
   - R.swift.Library (4.0.0)
   - SwiftLint (0.25.0)
   - SWRevealViewController (2.3.0)
+  - TextFieldEffects (1.4.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - R.swift
   - SwiftLint
   - SWRevealViewController
+  - TextFieldEffects
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
@@ -21,7 +23,8 @@ SPEC CHECKSUMS:
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
+  TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: 928681d73473c2ec4f4c35ee920a90f75a33718a
+PODFILE CHECKSUM: 7dedfa0efbbddfda5bd6879b27c779889d4da35e
 
 COCOAPODS: 1.4.0

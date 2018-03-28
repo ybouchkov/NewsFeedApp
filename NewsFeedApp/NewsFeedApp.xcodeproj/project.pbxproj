@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		16F50F3C6C71B0533167F07B /* Pods_NewsFeedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D347365B6A8F3E94C182CA27 /* Pods_NewsFeedApp.framework */; };
+		37502C08206BED6700F3CD27 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37502C07206BED6700F3CD27 /* LoginViewController.swift */; };
+		37502C0A206BEDD300F3CD27 /* LoginScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37502C09206BEDD300F3CD27 /* LoginScene.storyboard */; };
 		3799B2DC206BCB8F00730E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3799B2DB206BCB8F00730E85 /* AppDelegate.swift */; };
 		3799B2E1206BCB8F00730E85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3799B2DF206BCB8F00730E85 /* Main.storyboard */; };
 		3799B2E3206BCB8F00730E85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3799B2E2206BCB8F00730E85 /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		2485B1203A55F3C4D45A1151 /* Pods-NewsFeedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeedApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeedApp/Pods-NewsFeedApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2687E13D006776F5CEFC777C /* Pods-NewsFeedAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeedAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeedAppTests/Pods-NewsFeedAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		27AEEE7146244A0EF69B2F6A /* Pods-NewsFeedAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeedAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeedAppTests/Pods-NewsFeedAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		37502C07206BED6700F3CD27 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		37502C09206BEDD300F3CD27 /* LoginScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginScene.storyboard; sourceTree = "<group>"; };
 		3799B2D8206BCB8F00730E85 /* NewsFeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsFeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3799B2DB206BCB8F00730E85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3799B2E0206BCB8F00730E85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			children = (
 				3799B2DF206BCB8F00730E85 /* Main.storyboard */,
 				3799B2E4206BCB8F00730E85 /* LaunchScreen.storyboard */,
+				37502C09206BEDD300F3CD27 /* LoginScene.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				37D40229206BCCF600519DC9 /* ArticlesViewController.swift */,
+				37502C07206BED6700F3CD27 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				3799B2E6206BCB8F00730E85 /* LaunchScreen.storyboard in Resources */,
 				3799B2E3206BCB8F00730E85 /* Assets.xcassets in Resources */,
 				3799B2E1206BCB8F00730E85 /* Main.storyboard in Resources */,
+				37502C0A206BEDD300F3CD27 /* LoginScene.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +381,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SWRevealViewController/SWRevealViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -381,6 +389,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWRevealViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -551,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37502C08206BED6700F3CD27 /* LoginViewController.swift in Sources */,
 				37D4022A206BCCF600519DC9 /* ArticlesViewController.swift in Sources */,
 				37D4023C206BE61600519DC9 /* UITableView+.swift in Sources */,
 				3799B2DC206BCB8F00730E85 /* AppDelegate.swift in Sources */,

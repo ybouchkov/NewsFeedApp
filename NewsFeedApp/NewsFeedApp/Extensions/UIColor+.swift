@@ -10,8 +10,8 @@ import UIKit
 
 extension UIColor {
     // MARK: - Common
-    class var mainDarBlue:          UIColor { return UIColor(hexString: "#00529F") }
-    class var secondBlue:           UIColor { return UIColor(hexString: "#007EB3") }
+    class var mainDarBlue:          UIColor { return UIColor(hexString: "#66a3ff") }
+    class var secondBlue:           UIColor { return UIColor(hexString: "#003380") }
     class var red:                  UIColor { return UIColor(hexString: "#EE1C2E") }
     class var backgroundWhite:      UIColor { return UIColor(hexString: "#F7F7F7") }
     class var backgroundLightGray:  UIColor { return UIColor(hexString: "#E5E8EA") }

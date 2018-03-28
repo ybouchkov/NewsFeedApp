@@ -12,6 +12,9 @@ target 'NewsFeedApp' do
   pod 'Alamofire'
   pod 'SWRevealViewController', :inhibit_warnings => true
 
+    pod 'TextFieldEffects'
+
+
   target 'NewsFeedAppTests' do
     inherit! :search_paths
     # Pods for testing
