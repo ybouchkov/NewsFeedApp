@@ -13,6 +13,7 @@ struct R: Rswift.Validatable {
   fileprivate static let hostingBundle = Bundle(for: R.Class.self)
   
   static func validate() throws {
+    try font.validate()
     try intern.validate()
   }
   
@@ -21,13 +22,66 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 0 files.
+  /// This `R.file` struct is generated, and contains static references to 3 files.
   struct file {
+    /// Resource file `Painting_With_Chocolate.ttf`.
+    static let painting_With_ChocolateTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Painting_With_Chocolate", pathExtension: "ttf")
+    /// Resource file `Pentay-Book-FFP.ttf`.
+    static let pentayBookFFPTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Pentay-Book-FFP", pathExtension: "ttf")
+    /// Resource file `Pentay-Book-Italic-FFP.ttf`.
+    static let pentayBookItalicFFPTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Pentay-Book-Italic-FFP", pathExtension: "ttf")
+    
+    /// `bundle.url(forResource: "Painting_With_Chocolate", withExtension: "ttf")`
+    static func painting_With_ChocolateTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.painting_With_ChocolateTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Pentay-Book-FFP", withExtension: "ttf")`
+    static func pentayBookFFPTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.pentayBookFFPTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Pentay-Book-Italic-FFP", withExtension: "ttf")`
+    static func pentayBookItalicFFPTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.pentayBookItalicFFPTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.font` struct is generated, and contains static references to 0 fonts.
-  struct font {
+  /// This `R.font` struct is generated, and contains static references to 3 fonts.
+  struct font: Rswift.Validatable {
+    /// Font `PaintingWithChocolate`.
+    static let paintingWithChocolate = Rswift.FontResource(fontName: "PaintingWithChocolate")
+    /// Font `Pentay-Book`.
+    static let pentayBook = Rswift.FontResource(fontName: "Pentay-Book")
+    /// Font `PentayBook-Italic`.
+    static let pentayBookItalic = Rswift.FontResource(fontName: "PentayBook-Italic")
+    
+    /// `UIFont(name: "PaintingWithChocolate", size: ...)`
+    static func paintingWithChocolate(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: paintingWithChocolate, size: size)
+    }
+    
+    /// `UIFont(name: "Pentay-Book", size: ...)`
+    static func pentayBook(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: pentayBook, size: size)
+    }
+    
+    /// `UIFont(name: "PentayBook-Italic", size: ...)`
+    static func pentayBookItalic(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: pentayBookItalic, size: size)
+    }
+    
+    static func validate() throws {
+      if R.font.pentayBook(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Pentay-Book' could not be loaded, is 'Pentay-Book-FFP.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.pentayBookItalic(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'PentayBook-Italic' could not be loaded, is 'Pentay-Book-Italic-FFP.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.paintingWithChocolate(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'PaintingWithChocolate' could not be loaded, is 'Painting_With_Chocolate.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+    }
+    
     fileprivate init() {}
   }
   
@@ -93,8 +147,96 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.string` struct is generated, and contains static references to 0 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 4 localization tables.
   struct string {
+    /// This `R.string.launchScreen` struct is generated, and contains static references to 0 localization keys.
+    struct launchScreen {
+      fileprivate init() {}
+    }
+    
+    /// This `R.string.localizable` struct is generated, and contains static references to 3 localization keys.
+    struct localizable {
+      /// Base translation: More info
+      /// 
+      /// Locales: Base, bg-BG
+      static let lbl_info = Rswift.StringResource(key: "lbl_info", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "bg-BG"], comment: nil)
+      /// Base translation: password
+      /// 
+      /// Locales: Base, bg-BG
+      static let placeholder_password = Rswift.StringResource(key: "placeholder_password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "bg-BG"], comment: nil)
+      /// Base translation: user
+      /// 
+      /// Locales: Base, bg-BG
+      static let placeholder_user = Rswift.StringResource(key: "placeholder_user", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "bg-BG"], comment: nil)
+      
+      /// Base translation: More info
+      /// 
+      /// Locales: Base, bg-BG
+      static func lbl_info(_: Void = ()) -> String {
+        return NSLocalizedString("lbl_info", bundle: R.hostingBundle, value: "More info", comment: "")
+      }
+      
+      /// Base translation: password
+      /// 
+      /// Locales: Base, bg-BG
+      static func placeholder_password(_: Void = ()) -> String {
+        return NSLocalizedString("placeholder_password", bundle: R.hostingBundle, value: "password", comment: "")
+      }
+      
+      /// Base translation: user
+      /// 
+      /// Locales: Base, bg-BG
+      static func placeholder_user(_: Void = ()) -> String {
+        return NSLocalizedString("placeholder_user", bundle: R.hostingBundle, value: "user", comment: "")
+      }
+      
+      fileprivate init() {}
+    }
+    
+    /// This `R.string.loginScene` struct is generated, and contains static references to 3 localization keys.
+    struct loginScene {
+      /// bg-BG translation: Label
+      /// 
+      /// Locales: bg-BG
+      static let fhLCRr2Text = Rswift.StringResource(key: "5fh-LC-rr2.text", tableName: "LoginScene", bundle: R.hostingBundle, locales: ["bg-BG"], comment: nil)
+      /// bg-BG translation: password
+      /// 
+      /// Locales: bg-BG
+      static let jixg7IEKPlaceholder = Rswift.StringResource(key: "JIX-g7-IEK.placeholder", tableName: "LoginScene", bundle: R.hostingBundle, locales: ["bg-BG"], comment: nil)
+      /// bg-BG translation: user
+      /// 
+      /// Locales: bg-BG
+      static let ysVCQXUPlaceholder = Rswift.StringResource(key: "3Ys-vC-QXU.placeholder", tableName: "LoginScene", bundle: R.hostingBundle, locales: ["bg-BG"], comment: nil)
+      
+      /// bg-BG translation: Label
+      /// 
+      /// Locales: bg-BG
+      static func fhLCRr2Text(_: Void = ()) -> String {
+        return NSLocalizedString("5fh-LC-rr2.text", tableName: "LoginScene", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// bg-BG translation: password
+      /// 
+      /// Locales: bg-BG
+      static func jixg7IEKPlaceholder(_: Void = ()) -> String {
+        return NSLocalizedString("JIX-g7-IEK.placeholder", tableName: "LoginScene", bundle: R.hostingBundle, comment: "")
+      }
+      
+      /// bg-BG translation: user
+      /// 
+      /// Locales: bg-BG
+      static func ysVCQXUPlaceholder(_: Void = ()) -> String {
+        return NSLocalizedString("3Ys-vC-QXU.placeholder", tableName: "LoginScene", bundle: R.hostingBundle, comment: "")
+      }
+      
+      fileprivate init() {}
+    }
+    
+    /// This `R.string.main` struct is generated, and contains static references to 0 localization keys.
+    struct main {
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   

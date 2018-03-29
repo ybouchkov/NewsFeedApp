@@ -1,0 +1,9 @@
+
+/* Class = "UITextField"; placeholder = "user"; ObjectID = "3Ys-vC-QXU"; */
+"3Ys-vC-QXU.placeholder" = "user";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5fh-LC-rr2"; */
+"5fh-LC-rr2.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "JIX-g7-IEK"; */
+"JIX-g7-IEK.placeholder" = "password";

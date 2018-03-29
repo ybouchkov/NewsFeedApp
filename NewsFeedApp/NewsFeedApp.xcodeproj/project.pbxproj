@@ -8,8 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		16F50F3C6C71B0533167F07B /* Pods_NewsFeedApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D347365B6A8F3E94C182CA27 /* Pods_NewsFeedApp.framework */; };
+		3736C43F206CD3A0000712F4 /* Painting_With_Chocolate.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3736C43E206CD3A0000712F4 /* Painting_With_Chocolate.ttf */; };
+		3736C442206CD3B9000712F4 /* Pentay-Book-FFP.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3736C440206CD3B9000712F4 /* Pentay-Book-FFP.ttf */; };
+		3736C443206CD3B9000712F4 /* Pentay-Book-Italic-FFP.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3736C441206CD3B9000712F4 /* Pentay-Book-Italic-FFP.ttf */; };
+		3736C445206CD495000712F4 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3736C444206CD495000712F4 /* UIFont+.swift */; };
+		3736C447206CD8D9000712F4 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3736C446206CD8D9000712F4 /* UILabel+.swift */; };
+		3736C449206CDA77000712F4 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3736C448206CDA77000712F4 /* UIButton+.swift */; };
+		3736C44B206CDE2F000712F4 /* LoginScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3736C44D206CDE2F000712F4 /* LoginScene.storyboard */; };
+		3736C453206D0435000712F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3736C451206D0435000712F4 /* Localizable.strings */; };
+		3736C457206D1177000712F4 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3736C456206D1177000712F4 /* UITextField+.swift */; };
 		37502C08206BED6700F3CD27 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37502C07206BED6700F3CD27 /* LoginViewController.swift */; };
-		37502C0A206BEDD300F3CD27 /* LoginScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37502C09206BEDD300F3CD27 /* LoginScene.storyboard */; };
 		3799B2DC206BCB8F00730E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3799B2DB206BCB8F00730E85 /* AppDelegate.swift */; };
 		3799B2E1206BCB8F00730E85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3799B2DF206BCB8F00730E85 /* Main.storyboard */; };
 		3799B2E3206BCB8F00730E85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3799B2E2206BCB8F00730E85 /* Assets.xcassets */; };
@@ -47,8 +55,20 @@
 		2485B1203A55F3C4D45A1151 /* Pods-NewsFeedApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeedApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeedApp/Pods-NewsFeedApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2687E13D006776F5CEFC777C /* Pods-NewsFeedAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeedAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeedAppTests/Pods-NewsFeedAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		27AEEE7146244A0EF69B2F6A /* Pods-NewsFeedAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsFeedAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsFeedAppTests/Pods-NewsFeedAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		3736C43E206CD3A0000712F4 /* Painting_With_Chocolate.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Painting_With_Chocolate.ttf; sourceTree = "<group>"; };
+		3736C440206CD3B9000712F4 /* Pentay-Book-FFP.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pentay-Book-FFP.ttf"; sourceTree = "<group>"; };
+		3736C441206CD3B9000712F4 /* Pentay-Book-Italic-FFP.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pentay-Book-Italic-FFP.ttf"; sourceTree = "<group>"; };
+		3736C444206CD495000712F4 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		3736C446206CD8D9000712F4 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		3736C448206CDA77000712F4 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		3736C44C206CDE2F000712F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginScene.storyboard; sourceTree = "<group>"; };
+		3736C44E206CDE58000712F4 /* bg-BG */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "bg-BG"; path = "bg-BG.lproj/Main.strings"; sourceTree = "<group>"; };
+		3736C44F206CDE58000712F4 /* bg-BG */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "bg-BG"; path = "bg-BG.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		3736C450206CDE58000712F4 /* bg-BG */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "bg-BG"; path = "bg-BG.lproj/LoginScene.strings"; sourceTree = "<group>"; };
+		3736C452206D0435000712F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3736C455206D0466000712F4 /* bg-BG */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "bg-BG"; path = "bg-BG.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		3736C456206D1177000712F4 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		37502C07206BED6700F3CD27 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		37502C09206BEDD300F3CD27 /* LoginScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginScene.storyboard; sourceTree = "<group>"; };
 		3799B2D8206BCB8F00730E85 /* NewsFeedApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsFeedApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3799B2DB206BCB8F00730E85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3799B2E0206BCB8F00730E85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,6 +132,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3736C44A206CDDAC000712F4 /* CustomFont */ = {
+			isa = PBXGroup;
+			children = (
+				3736C43E206CD3A0000712F4 /* Painting_With_Chocolate.ttf */,
+				3736C440206CD3B9000712F4 /* Pentay-Book-FFP.ttf */,
+				3736C441206CD3B9000712F4 /* Pentay-Book-Italic-FFP.ttf */,
+			);
+			path = CustomFont;
+			sourceTree = "<group>";
+		};
 		3799B2CF206BCB8E00730E85 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +167,8 @@
 		3799B2DA206BCB8F00730E85 /* NewsFeedApp */ = {
 			isa = PBXGroup;
 			children = (
+				3736C44A206CDDAC000712F4 /* CustomFont */,
+				3736C451206D0435000712F4 /* Localizable.strings */,
 				37D40234206BCE9600519DC9 /* R.generated.swift */,
 				3799B2DB206BCB8F00730E85 /* AppDelegate.swift */,
 				3799B2E2206BCB8F00730E85 /* Assets.xcassets */,
@@ -174,7 +206,7 @@
 			children = (
 				3799B2DF206BCB8F00730E85 /* Main.storyboard */,
 				3799B2E4206BCB8F00730E85 /* LaunchScreen.storyboard */,
-				37502C09206BEDD300F3CD27 /* LoginScene.storyboard */,
+				3736C44D206CDE2F000712F4 /* LoginScene.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -193,6 +225,10 @@
 			children = (
 				37D4023B206BE61600519DC9 /* UITableView+.swift */,
 				37D4023E206BE64500519DC9 /* UIColor+.swift */,
+				3736C444206CD495000712F4 /* UIFont+.swift */,
+				3736C446206CD8D9000712F4 /* UILabel+.swift */,
+				3736C448206CDA77000712F4 /* UIButton+.swift */,
+				3736C456206D1177000712F4 /* UITextField+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,8 +362,8 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				"bg-BG",
 			);
 			mainGroup = 3799B2CF206BCB8E00730E85;
 			productRefGroup = 3799B2D9206BCB8F00730E85 /* Products */;
@@ -346,10 +382,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3736C443206CD3B9000712F4 /* Pentay-Book-Italic-FFP.ttf in Resources */,
 				3799B2E6206BCB8F00730E85 /* LaunchScreen.storyboard in Resources */,
+				3736C442206CD3B9000712F4 /* Pentay-Book-FFP.ttf in Resources */,
+				3736C43F206CD3A0000712F4 /* Painting_With_Chocolate.ttf in Resources */,
 				3799B2E3206BCB8F00730E85 /* Assets.xcassets in Resources */,
+				3736C453206D0435000712F4 /* Localizable.strings in Resources */,
 				3799B2E1206BCB8F00730E85 /* Main.storyboard in Resources */,
-				37502C0A206BEDD300F3CD27 /* LoginScene.storyboard in Resources */,
+				3736C44B206CDE2F000712F4 /* LoginScene.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,8 +601,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				37502C08206BED6700F3CD27 /* LoginViewController.swift in Sources */,
+				3736C457206D1177000712F4 /* UITextField+.swift in Sources */,
 				37D4022A206BCCF600519DC9 /* ArticlesViewController.swift in Sources */,
+				3736C447206CD8D9000712F4 /* UILabel+.swift in Sources */,
 				37D4023C206BE61600519DC9 /* UITableView+.swift in Sources */,
+				3736C449206CDA77000712F4 /* UIButton+.swift in Sources */,
+				3736C445206CD495000712F4 /* UIFont+.swift in Sources */,
 				3799B2DC206BCB8F00730E85 /* AppDelegate.swift in Sources */,
 				37D40235206BCE9600519DC9 /* R.generated.swift in Sources */,
 				37D4023F206BE64500519DC9 /* UIColor+.swift in Sources */,
@@ -601,10 +645,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3736C44D206CDE2F000712F4 /* LoginScene.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3736C44C206CDE2F000712F4 /* Base */,
+				3736C450206CDE58000712F4 /* bg-BG */,
+			);
+			name = LoginScene.storyboard;
+			sourceTree = "<group>";
+		};
+		3736C451206D0435000712F4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3736C452206D0435000712F4 /* Base */,
+				3736C455206D0466000712F4 /* bg-BG */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		3799B2DF206BCB8F00730E85 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3799B2E0206BCB8F00730E85 /* Base */,
+				3736C44E206CDE58000712F4 /* bg-BG */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -613,6 +676,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3799B2E5206BCB8F00730E85 /* Base */,
+				3736C44F206CDE58000712F4 /* bg-BG */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -624,6 +688,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -681,6 +746,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

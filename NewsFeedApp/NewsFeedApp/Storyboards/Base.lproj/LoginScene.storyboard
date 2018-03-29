@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="LG6-nN-Zfy">
@@ -34,7 +39,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                 <real key="value" value="1"/>
@@ -53,11 +58,11 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIX-g7-IEK" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="passwrod" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIX-g7-IEK" customClass="HoshiTextField" customModule="TextFieldEffects">
                                         <rect key="frame" x="0.0" y="50" width="275" height="50"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                 <real key="value" value="1"/>
@@ -89,6 +94,12 @@
                                 </constraints>
                                 <state key="normal" image="login"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fh-LC-rr2">
+                                <rect key="frame" x="50" y="420" width="42" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -97,12 +108,15 @@
                             <constraint firstItem="VWj-zA-RZ2" firstAttribute="centerX" secondItem="Mze-wG-V0p" secondAttribute="centerX" id="IUv-GA-b37"/>
                             <constraint firstItem="mZy-kK-fNP" firstAttribute="top" secondItem="wmD-hc-R0t" secondAttribute="top" constant="16" id="P3A-IG-fVt"/>
                             <constraint firstItem="XdV-9b-a8k" firstAttribute="leading" secondItem="wmD-hc-R0t" secondAttribute="leading" constant="50" id="XKK-CJ-rAx"/>
+                            <constraint firstItem="5fh-LC-rr2" firstAttribute="top" secondItem="XdV-9b-a8k" secondAttribute="bottom" constant="8" id="drl-Lz-NHt"/>
+                            <constraint firstItem="5fh-LC-rr2" firstAttribute="leading" secondItem="JIX-g7-IEK" secondAttribute="leading" id="hBe-UO-DEv"/>
                             <constraint firstItem="mZy-kK-fNP" firstAttribute="centerX" secondItem="Mze-wG-V0p" secondAttribute="centerX" id="iqZ-d0-bkg"/>
                             <constraint firstItem="wmD-hc-R0t" firstAttribute="bottom" secondItem="VWj-zA-RZ2" secondAttribute="bottom" constant="20" id="rft-Qu-HbR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wmD-hc-R0t"/>
                     </view>
                     <connections>
+                        <outlet property="infoLbl" destination="5fh-LC-rr2" id="ruo-yV-Cyc"/>
                         <outlet property="txtFieldPassword" destination="JIX-g7-IEK" id="tAb-gS-7rx"/>
                         <outlet property="txtFieldUser" destination="3Ys-vC-QXU" id="oS2-3Z-l3Q"/>
                     </connections>
