@@ -24,6 +24,7 @@
 		3799B2E6206BCB8F00730E85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3799B2E4206BCB8F00730E85 /* LaunchScreen.storyboard */; };
 		3799B2F1206BCB8F00730E85 /* NewsFeedAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3799B2F0206BCB8F00730E85 /* NewsFeedAppTests.swift */; };
 		3799B2FC206BCB8F00730E85 /* NewsFeedAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3799B2FB206BCB8F00730E85 /* NewsFeedAppUITests.swift */; };
+		37C92395206E7813003026AC /* LoginValidationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C92394206E7813003026AC /* LoginValidationProtocol.swift */; };
 		37D4022A206BCCF600519DC9 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D40229206BCCF600519DC9 /* ArticlesViewController.swift */; };
 		37D40235206BCE9600519DC9 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D40234206BCE9600519DC9 /* R.generated.swift */; };
 		37D4023C206BE61600519DC9 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D4023B206BE61600519DC9 /* UITableView+.swift */; };
@@ -81,6 +82,7 @@
 		3799B2F7206BCB8F00730E85 /* NewsFeedAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsFeedAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3799B2FB206BCB8F00730E85 /* NewsFeedAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedAppUITests.swift; sourceTree = "<group>"; };
 		3799B2FD206BCB8F00730E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37C92394206E7813003026AC /* LoginValidationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidationProtocol.swift; sourceTree = "<group>"; };
 		37D40229206BCCF600519DC9 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		37D40234206BCE9600519DC9 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		37D4023B206BE61600519DC9 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
@@ -140,6 +142,15 @@
 				3736C441206CD3B9000712F4 /* Pentay-Book-Italic-FFP.ttf */,
 			);
 			path = CustomFont;
+			sourceTree = "<group>";
+		};
+		3736C45A206D2E5C000712F4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				37502C07206BED6700F3CD27 /* LoginViewController.swift */,
+				37C92394206E7813003026AC /* LoginValidationProtocol.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		3799B2CF206BCB8E00730E85 = {
@@ -215,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				37D40229206BCCF600519DC9 /* ArticlesViewController.swift */,
-				37502C07206BED6700F3CD27 /* LoginViewController.swift */,
+				3736C45A206D2E5C000712F4 /* Login */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -605,6 +616,7 @@
 				37D4022A206BCCF600519DC9 /* ArticlesViewController.swift in Sources */,
 				3736C447206CD8D9000712F4 /* UILabel+.swift in Sources */,
 				37D4023C206BE61600519DC9 /* UITableView+.swift in Sources */,
+				37C92395206E7813003026AC /* LoginValidationProtocol.swift in Sources */,
 				3736C449206CDA77000712F4 /* UIButton+.swift in Sources */,
 				3736C445206CD495000712F4 /* UIFont+.swift in Sources */,
 				3799B2DC206BCB8F00730E85 /* AppDelegate.swift in Sources */,

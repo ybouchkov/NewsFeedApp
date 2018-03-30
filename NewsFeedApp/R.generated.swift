@@ -85,16 +85,23 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 2 images.
+  /// This `R.image` struct is generated, and contains static references to 3 images.
   struct image {
-    /// Image `login`.
-    static let login = Rswift.ImageResource(bundle: R.hostingBundle, name: "login")
+    /// Image `login_disable`.
+    static let login_disable = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_disable")
+    /// Image `login_enable`.
+    static let login_enable = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_enable")
     /// Image `newspaper`.
     static let newspaper = Rswift.ImageResource(bundle: R.hostingBundle, name: "newspaper")
     
-    /// `UIImage(named: "login", bundle: ..., traitCollection: ...)`
-    static func login(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.login, compatibleWith: traitCollection)
+    /// `UIImage(named: "login_disable", bundle: ..., traitCollection: ...)`
+    static func login_disable(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.login_disable, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "login_enable", bundle: ..., traitCollection: ...)`
+    static func login_enable(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.login_enable, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "newspaper", bundle: ..., traitCollection: ...)`
@@ -283,7 +290,6 @@ struct _R: Rswift.Validatable {
       let name = "LoginScene"
       
       static func validate() throws {
-        if UIKit.UIImage(named: "login") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'login' is used in storyboard 'LoginScene', but couldn't be loaded.") }
         if UIKit.UIImage(named: "newspaper") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'newspaper' is used in storyboard 'LoginScene', but couldn't be loaded.") }
       }
       

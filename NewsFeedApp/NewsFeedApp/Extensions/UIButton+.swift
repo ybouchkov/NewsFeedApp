@@ -9,9 +9,10 @@
 import UIKit
 
 extension UIButton {
-    func setup(title: String, font: UIFont, color: UIColor? = .white) {
+    func setup(title: String? = nil, font: UIFont? = nil, color: UIColor? = .white, image: UIImage? = nil) {
         self.titleLabel?.text = title
         self.tintColor = color
         self.titleLabel?.font = font
+        self.setImage(image, for: .normal)
     }
 }

@@ -57,6 +57,9 @@
                                                 <color key="value" red="0.69632754990000001" green="1" blue="0.89498381670000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="8x2-ON-19F" id="TSo-Bj-qIm"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="passwrod" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIX-g7-IEK" customClass="HoshiTextField" customModule="TextFieldEffects">
                                         <rect key="frame" x="0.0" y="50" width="275" height="50"/>
@@ -80,6 +83,9 @@
                                                 <color key="value" red="0.69632754990000001" green="1" blue="0.89498381670000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="8x2-ON-19F" id="z5x-fw-qTE"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -92,11 +98,19 @@
                                     <constraint firstAttribute="width" constant="64" id="g8E-PU-E10"/>
                                     <constraint firstAttribute="height" constant="64" id="wRb-3S-TbG"/>
                                 </constraints>
-                                <state key="normal" image="login"/>
+                                <connections>
+                                    <action selector="btnTapped:" destination="8x2-ON-19F" eventType="touchUpInside" id="ayd-Sq-yd3"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fh-LC-rr2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fh-LC-rr2" customClass="UnderlinedLabel" customModule="NewsFeedApp" customModuleProvider="target">
                                 <rect key="frame" x="50" y="420" width="42" height="20"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LO3-ky-y0j">
+                                <rect key="frame" x="108" y="420" width="217" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -104,8 +118,11 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wmD-hc-R0t" firstAttribute="trailing" secondItem="XdV-9b-a8k" secondAttribute="trailing" constant="50" id="2yv-ZL-9Gr"/>
+                            <constraint firstItem="LO3-ky-y0j" firstAttribute="leading" secondItem="5fh-LC-rr2" secondAttribute="trailing" constant="16" id="5Gf-y1-yLL"/>
                             <constraint firstItem="XdV-9b-a8k" firstAttribute="top" secondItem="mZy-kK-fNP" secondAttribute="bottom" constant="20" id="80a-TG-MQJ"/>
                             <constraint firstItem="VWj-zA-RZ2" firstAttribute="centerX" secondItem="Mze-wG-V0p" secondAttribute="centerX" id="IUv-GA-b37"/>
+                            <constraint firstItem="LO3-ky-y0j" firstAttribute="top" secondItem="XdV-9b-a8k" secondAttribute="bottom" constant="8" id="IVc-Uq-YHO"/>
+                            <constraint firstItem="LO3-ky-y0j" firstAttribute="trailing" secondItem="XdV-9b-a8k" secondAttribute="trailing" id="Js3-he-taC"/>
                             <constraint firstItem="mZy-kK-fNP" firstAttribute="top" secondItem="wmD-hc-R0t" secondAttribute="top" constant="16" id="P3A-IG-fVt"/>
                             <constraint firstItem="XdV-9b-a8k" firstAttribute="leading" secondItem="wmD-hc-R0t" secondAttribute="leading" constant="50" id="XKK-CJ-rAx"/>
                             <constraint firstItem="5fh-LC-rr2" firstAttribute="top" secondItem="XdV-9b-a8k" secondAttribute="bottom" constant="8" id="drl-Lz-NHt"/>
@@ -116,7 +133,9 @@
                         <viewLayoutGuide key="safeArea" id="wmD-hc-R0t"/>
                     </view>
                     <connections>
-                        <outlet property="infoLbl" destination="5fh-LC-rr2" id="ruo-yV-Cyc"/>
+                        <outlet property="btnLogin" destination="VWj-zA-RZ2" id="WXR-Wj-uOK"/>
+                        <outlet property="infoLbl" destination="5fh-LC-rr2" id="iqI-4M-KaJ"/>
+                        <outlet property="lblError" destination="LO3-ky-y0j" id="Ead-mB-DIP"/>
                         <outlet property="txtFieldPassword" destination="JIX-g7-IEK" id="tAb-gS-7rx"/>
                         <outlet property="txtFieldUser" destination="3Ys-vC-QXU" id="oS2-3Z-l3Q"/>
                     </connections>
@@ -127,7 +146,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="login" width="64" height="64"/>
         <image name="newspaper" width="256" height="256"/>
     </resources>
 </document>
