@@ -85,14 +85,21 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 3 images.
+  /// This `R.image` struct is generated, and contains static references to 4 images.
   struct image {
+    /// Image `NewsFeed`.
+    static let newsFeed = Rswift.ImageResource(bundle: R.hostingBundle, name: "NewsFeed")
     /// Image `login_disable`.
     static let login_disable = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_disable")
     /// Image `login_enable`.
     static let login_enable = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_enable")
     /// Image `newspaper`.
     static let newspaper = Rswift.ImageResource(bundle: R.hostingBundle, name: "newspaper")
+    
+    /// `UIImage(named: "NewsFeed", bundle: ..., traitCollection: ...)`
+    static func newsFeed(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.newsFeed, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "login_disable", bundle: ..., traitCollection: ...)`
     static func login_disable(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -272,13 +279,18 @@ struct _R: Rswift.Validatable {
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       try loginScene.validate()
+      try launchScreen.validate()
     }
     
-    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType {
+    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = UIKit.UIViewController
       
       let bundle = R.hostingBundle
       let name = "LaunchScreen"
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "NewsFeed") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'NewsFeed' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+      }
       
       fileprivate init() {}
     }
