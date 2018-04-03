@@ -17,7 +17,7 @@
         <!--Login View Controller-->
         <scene sceneID="LG6-nN-Zfy">
             <objects>
-                <viewController id="8x2-ON-19F" customClass="LoginViewController" customModule="NewsFeedApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="8x2-ON-19F" customClass="LoginViewController" customModule="NewsFeedApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mze-wG-V0p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

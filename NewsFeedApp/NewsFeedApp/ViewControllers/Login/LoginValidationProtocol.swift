@@ -32,6 +32,7 @@ extension ValidationFieldsProtocol {
     }
 }
 
+// Should be localized
 enum ErrorMessage: String {
     case passwordError = "Short or easy password"
     case userError = "Short or incorrect user"

@@ -11,6 +11,20 @@ import TextFieldEffects
 
 class LoginViewController: UIViewController {
 
+    /**
+     Login View Controller storyboard function for init and call LoginVC
+     This is something like second way to init the view controller from another
+     point the app. In this application, i will be working with xibs, but i want
+     to show the second way - when you are working with storyboards.
+     */
+    static func storyboardInstance() -> LoginViewController? {
+        let storyboard = R.storyboard.loginScene()
+        if let vc = storyboard.instantiateInitialViewController() as? LoginViewController {
+            return vc
+        }
+        return nil
+    }
+
     // MARK: - IBOutlets
     @IBOutlet fileprivate weak var txtFieldUser: HoshiTextField!
     @IBOutlet fileprivate weak var txtFieldPassword: HoshiTextField!

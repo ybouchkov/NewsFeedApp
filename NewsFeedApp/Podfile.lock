@@ -12,6 +12,7 @@ DEPENDENCIES:
   - Alamofire
   - IQKeyboardManager
   - R.swift
+  - R.swift.Library
   - SwiftLint
   - SWRevealViewController
   - TextFieldEffects
@@ -25,6 +26,6 @@ SPEC CHECKSUMS:
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: 7dedfa0efbbddfda5bd6879b27c779889d4da35e
+PODFILE CHECKSUM: 4fdb0f7605e2a24f5002eb87e6dff2c18b352c02
 
 COCOAPODS: 1.4.0

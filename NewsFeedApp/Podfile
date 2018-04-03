@@ -11,8 +11,8 @@ target 'NewsFeedApp' do
   pod 'IQKeyboardManager'
   pod 'Alamofire'
   pod 'SWRevealViewController', :inhibit_warnings => true
-
-    pod 'TextFieldEffects'
+  pod 'R.swift.Library'                              #  https://github.com/mac-cain13/R.swift.Library
+  pod 'TextFieldEffects'
 
 
   target 'NewsFeedAppTests' do

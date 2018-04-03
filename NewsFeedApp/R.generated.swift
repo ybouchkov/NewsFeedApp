@@ -134,14 +134,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 3 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `LoginScene`.
     static let loginScene = _R.storyboard.loginScene()
-    /// Storyboard `Main`.
-    static let main = _R.storyboard.main()
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
@@ -153,15 +151,10 @@ struct R: Rswift.Validatable {
       return UIKit.UIStoryboard(resource: R.storyboard.loginScene)
     }
     
-    /// `UIStoryboard(name: "Main", bundle: ...)`
-    static func main(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.main)
-    }
-    
     fileprivate init() {}
   }
   
-  /// This `R.string` struct is generated, and contains static references to 4 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 3 localization tables.
   struct string {
     /// This `R.string.launchScreen` struct is generated, and contains static references to 0 localization keys.
     struct launchScreen {
@@ -246,11 +239,6 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    /// This `R.string.main` struct is generated, and contains static references to 0 localization keys.
-    struct main {
-      fileprivate init() {}
-    }
-    
     fileprivate init() {}
   }
   
@@ -299,20 +287,17 @@ struct _R: Rswift.Validatable {
       typealias InitialController = LoginViewController
       
       let bundle = R.hostingBundle
+      let loginViewController = StoryboardViewControllerResource<LoginViewController>(identifier: "LoginViewController")
       let name = "LoginScene"
+      
+      func loginViewController(_: Void = ()) -> LoginViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: loginViewController)
+      }
       
       static func validate() throws {
         if UIKit.UIImage(named: "newspaper") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'newspaper' is used in storyboard 'LoginScene', but couldn't be loaded.") }
+        if _R.storyboard.loginScene().loginViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loginViewController' could not be loaded from storyboard 'LoginScene' as 'LoginViewController'.") }
       }
-      
-      fileprivate init() {}
-    }
-    
-    struct main: Rswift.StoryboardResourceWithInitialControllerType {
-      typealias InitialController = ArticlesViewController
-      
-      let bundle = R.hostingBundle
-      let name = "Main"
       
       fileprivate init() {}
     }
