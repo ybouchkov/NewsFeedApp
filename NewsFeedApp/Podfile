@@ -9,7 +9,7 @@ target 'NewsFeedApp' do
   pod 'SwiftLint'                                     # A tool to enforce Swift style and conventions. https://realm.io
   pod 'R.swift'
   pod 'IQKeyboardManager'
-  pod 'Alamofire'
+  pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'httpheaders'
   pod 'SWRevealViewController', :inhibit_warnings => true
   pod 'R.swift.Library'                              #  https://github.com/mac-cain13/R.swift.Library
   pod 'TextFieldEffects'

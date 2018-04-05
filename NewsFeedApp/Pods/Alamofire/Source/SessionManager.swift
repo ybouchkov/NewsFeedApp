@@ -1,7 +1,7 @@
 //
 //  SessionManager.swift
 //
-//  Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
+//  Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -47,75 +47,15 @@ open class SessionManager {
     /// directly for any ad hoc requests.
     open static let `default`: SessionManager = {
         let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        configuration.httpHeaders = SessionManager.defaultHTTPHeaders
 
         return SessionManager(configuration: configuration)
     }()
 
     /// Creates default values for the "Accept-Encoding", "Accept-Language" and "User-Agent" headers.
-    open static let defaultHTTPHeaders: HTTPHeaders = {
-        // Accept-Encoding HTTP Header; see https://tools.ietf.org/html/rfc7230#section-4.2.3
-        let acceptEncoding: String = "gzip;q=1.0, compress;q=0.5"
-
-        // Accept-Language HTTP Header; see https://tools.ietf.org/html/rfc7231#section-5.3.5
-        let acceptLanguage = Locale.preferredLanguages.prefix(6).enumerated().map { index, languageCode in
-            let quality = 1.0 - (Double(index) * 0.1)
-            return "\(languageCode);q=\(quality)"
-        }.joined(separator: ", ")
-
-        // User-Agent Header; see https://tools.ietf.org/html/rfc7231#section-5.5.3
-        // Example: `iOS Example/1.0 (org.alamofire.iOS-Example; build:1; iOS 10.0.0) Alamofire/4.0.0`
-        let userAgent: String = {
-            if let info = Bundle.main.infoDictionary {
-                let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
-                let bundle = info[kCFBundleIdentifierKey as String] as? String ?? "Unknown"
-                let appVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
-                let appBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
-
-                let osNameVersion: String = {
-                    let version = ProcessInfo.processInfo.operatingSystemVersion
-                    let versionString = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
-
-                    let osName: String = {
-                        #if os(iOS)
-                            return "iOS"
-                        #elseif os(watchOS)
-                            return "watchOS"
-                        #elseif os(tvOS)
-                            return "tvOS"
-                        #elseif os(macOS)
-                            return "OS X"
-                        #elseif os(Linux)
-                            return "Linux"
-                        #else
-                            return "Unknown"
-                        #endif
-                    }()
-
-                    return "\(osName) \(versionString)"
-                }()
-
-                let alamofireVersion: String = {
-                    guard
-                        let afInfo = Bundle(for: SessionManager.self).infoDictionary,
-                        let build = afInfo["CFBundleShortVersionString"]
-                    else { return "Unknown" }
-
-                    return "Alamofire/\(build)"
-                }()
-
-                return "\(executable)/\(appVersion) (\(bundle); build:\(appBuild); \(osNameVersion)) \(alamofireVersion)"
-            }
-
-            return "Alamofire"
-        }()
-
-        return [
-            "Accept-Encoding": acceptEncoding,
-            "Accept-Language": acceptLanguage,
-            "User-Agent": userAgent
-        ]
-    }()
+    open static let defaultHTTPHeaders: HTTPHeaders = [.defaultAcceptEncoding,
+                                                       .defaultAcceptLanguage,
+                                                       .defaultUserAgent]
 
     /// Default memory threshold used when encoding `MultipartFormData` in bytes.
     open static let multipartFormDataEncodingMemoryThreshold: UInt64 = 10_000_000
@@ -249,7 +189,6 @@ open class SessionManager {
     /// - parameter urlRequest: The URL request.
     ///
     /// - returns: The created `DataRequest`.
-    @discardableResult
     open func request(_ urlRequest: URLRequestConvertible) -> DataRequest {
         var originalRequest: URLRequest?
 
@@ -793,7 +732,6 @@ open class SessionManager {
     ///
     /// - returns: The created `StreamRequest`.
     @discardableResult
-    @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
     open func stream(withHostName hostName: String, port: Int) -> StreamRequest {
         return stream(.stream(hostName: hostName, port: port))
     }
@@ -808,14 +746,12 @@ open class SessionManager {
     ///
     /// - returns: The created `StreamRequest`.
     @discardableResult
-    @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
     open func stream(with netService: NetService) -> StreamRequest {
         return stream(.netService(netService))
     }
 
     // MARK: Private - Stream Implementation
 
-    @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
     private func stream(_ streamable: StreamRequest.Streamable) -> StreamRequest {
         do {
             let task = try streamable.task(session: session, adapter: adapter, queue: queue)
@@ -831,7 +767,6 @@ open class SessionManager {
         }
     }
 
-    @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
     private func stream(failedWith error: Error) -> StreamRequest {
         let stream = StreamRequest(session: session, requestTask: .stream(nil, nil), error: error)
         if startRequestsImmediately { stream.resume() }

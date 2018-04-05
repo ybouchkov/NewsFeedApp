@@ -1,7 +1,7 @@
 //
 //  TaskDelegate.swift
 //
-//  Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
+//  Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -41,31 +41,23 @@ open class TaskDelegate: NSObject {
 
     var task: URLSessionTask? {
         set {
-            taskLock.lock(); defer { taskLock.unlock() }
-            _task = newValue
+            protectedTask.unsafeValue = newValue
+            reset()
         }
-        get {
-            taskLock.lock(); defer { taskLock.unlock() }
-            return _task
-        }
+        get { return protectedTask.unsafeValue }
     }
-
     var initialResponseTime: CFAbsoluteTime?
     var credential: URLCredential?
     var metrics: AnyObject? // URLSessionTaskMetrics
 
-    private var _task: URLSessionTask? {
-        didSet { reset() }
-    }
-
-    private let taskLock = NSLock()
+    private let protectedTask: Protector<URLSessionTask?>
 
     // MARK: Lifecycle
 
     init(task: URLSessionTask?) {
-        _task = task
+        protectedTask = Protector(task)
 
-        self.queue = {
+        queue = {
             let operationQueue = OperationQueue()
 
             operationQueue.maxConcurrentOperationCount = 1

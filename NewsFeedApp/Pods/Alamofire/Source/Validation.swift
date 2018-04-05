@@ -1,7 +1,7 @@
 //
 //  Validation.swift
 //
-//  Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
+//  Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -39,42 +39,7 @@ extension Request {
         case failure(Error)
     }
 
-    fileprivate struct MIMEType {
-        let type: String
-        let subtype: String
-
-        var isWildcard: Bool { return type == "*" && subtype == "*" }
-
-        init?(_ string: String) {
-            let components: [String] = {
-                let stripped = string.trimmingCharacters(in: .whitespacesAndNewlines)
-
-            #if swift(>=3.2)
-                let split = stripped[..<(stripped.range(of: ";")?.lowerBound ?? stripped.endIndex)]
-            #else
-                let split = stripped.substring(to: stripped.range(of: ";")?.lowerBound ?? stripped.endIndex)
-            #endif
-
-                return split.components(separatedBy: "/")
-            }()
-
-            if let type = components.first, let subtype = components.last {
-                self.type = type
-                self.subtype = subtype
-            } else {
-                return nil
-            }
-        }
-
-        func matches(_ mime: MIMEType) -> Bool {
-            switch (type, subtype) {
-            case (mime.type, mime.subtype), (mime.type, "*"), ("*", mime.subtype), ("*", "*"):
-                return true
-            default:
-                return false
-            }
-        }
-    }
+    
 
     // MARK: Properties
 
@@ -134,7 +99,7 @@ extension Request {
         }
 
         for contentType in acceptableContentTypes {
-            if let acceptableMIMEType = MIMEType(contentType), acceptableMIMEType.matches(responseMIMEType) {
+            if let acceptableMIMEType = MIMEType(contentType), acceptableMIMEType == responseMIMEType {
                 return .success
             }
         }

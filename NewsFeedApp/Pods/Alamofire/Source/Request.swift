@@ -1,7 +1,7 @@
 //
 //  Request.swift
 //
-//  Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
+//  Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -64,7 +64,7 @@ protocol TaskConvertible {
 }
 
 /// A dictionary of headers to apply to a `URLRequest`.
-public typealias HTTPHeaders = [String: String]
+//public typealias HTTPHeaders = [String: String]
 
 // MARK: -
 
@@ -88,14 +88,8 @@ open class Request {
 
     /// The delegate for the underlying task.
     open internal(set) var delegate: TaskDelegate {
-        get {
-            taskDelegateLock.lock() ; defer { taskDelegateLock.unlock() }
-            return taskDelegate
-        }
-        set {
-            taskDelegateLock.lock() ; defer { taskDelegateLock.unlock() }
-            taskDelegate = newValue
-        }
+        get { return protectedDelegate.unsafeValue }
+        set { protectedDelegate.unsafeValue = newValue }
     }
 
     /// The underlying task.
@@ -120,8 +114,7 @@ open class Request {
 
     var validations: [() -> Void] = []
 
-    private var taskDelegate: TaskDelegate
-    private var taskDelegateLock = NSLock()
+    private var protectedDelegate: Protector<TaskDelegate>
 
     // MARK: Lifecycle
 
@@ -130,16 +123,16 @@ open class Request {
 
         switch requestTask {
         case .data(let originalTask, let task):
-            taskDelegate = DataTaskDelegate(task: task)
+            protectedDelegate = Protector(DataTaskDelegate(task: task))
             self.originalTask = originalTask
         case .download(let originalTask, let task):
-            taskDelegate = DownloadTaskDelegate(task: task)
+            protectedDelegate = Protector(DownloadTaskDelegate(task: task))
             self.originalTask = originalTask
         case .upload(let originalTask, let task):
-            taskDelegate = UploadTaskDelegate(task: task)
+            protectedDelegate = Protector(UploadTaskDelegate(task: task))
             self.originalTask = originalTask
         case .stream(let originalTask, let task):
-            taskDelegate = TaskDelegate(task: task)
+            protectedDelegate = Protector(TaskDelegate(task: task))
             self.originalTask = originalTask
         }
 
@@ -176,20 +169,6 @@ open class Request {
     open func authenticate(usingCredential credential: URLCredential) -> Self {
         delegate.credential = credential
         return self
-    }
-
-    /// Returns a base64 encoded basic authentication credential as an authorization header tuple.
-    ///
-    /// - parameter user:     The user.
-    /// - parameter password: The password.
-    ///
-    /// - returns: A tuple with Authorization header and credential value if encoding succeeds, `nil` otherwise.
-    open static func authorizationHeader(user: String, password: String) -> (key: String, value: String)? {
-        guard let data = "\(user):\(password)".data(using: .utf8) else { return nil }
-
-        let credential = data.base64EncodedString(options: [])
-
-        return (key: "Authorization", value: "Basic \(credential)")
     }
 
     // MARK: State
@@ -309,12 +288,7 @@ extension Request: CustomDebugStringConvertible {
                 let cookies = cookieStorage.cookies(for: url), !cookies.isEmpty
             {
                 let string = cookies.reduce("") { $0 + "\($1.name)=\($1.value);" }
-
-            #if swift(>=3.2)
                 components.append("-b \"\(string[..<string.index(before: string.endIndex)])\"")
-            #else
-                components.append("-b \"\(string.substring(to: string.characters.index(before: string.endIndex)))\"")
-            #endif
             }
         }
 
@@ -333,8 +307,7 @@ extension Request: CustomDebugStringConvertible {
         }
 
         for (field, value) in headers {
-            let escapedValue = String(describing: value).replacingOccurrences(of: "\"", with: "\\\"")
-            components.append("-H \"\(field): \(escapedValue)\"")
+            components.append("-H \"\(field): \(value)\"")
         }
 
         if let httpBodyData = request.httpBody, let httpBody = String(data: httpBodyData, encoding: .utf8) {
@@ -458,7 +431,7 @@ open class DownloadRequest: Request {
     enum Downloadable: TaskConvertible {
         case request(URLRequest)
         case resumeData(Data)
-
+        // TODO: Ask about this use of queue. Perhaps just to protect session and adapter?
         func task(session: URLSession, adapter: RequestAdapter?, queue: DispatchQueue) throws -> URLSessionTask {
             do {
                 let task: URLSessionTask
@@ -630,7 +603,6 @@ open class UploadRequest: DataRequest {
 #if !os(watchOS)
 
 /// Specific type of `Request` that manages an underlying `URLSessionStreamTask`.
-@available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
 open class StreamRequest: Request {
     enum Streamable: TaskConvertible {
         case stream(hostName: String, port: Int)

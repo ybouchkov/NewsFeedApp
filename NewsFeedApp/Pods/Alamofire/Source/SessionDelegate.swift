@@ -1,7 +1,7 @@
 //
 //  SessionDelegate.swift
 //
-//  Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
+//  Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -108,53 +108,16 @@ open class SessionDelegate: NSObject {
 #if !os(watchOS)
 
     /// Overrides default behavior for URLSessionStreamDelegate method `urlSession(_:readClosedFor:)`.
-    @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
-    open var streamTaskReadClosed: ((URLSession, URLSessionStreamTask) -> Void)? {
-        get {
-            return _streamTaskReadClosed as? (URLSession, URLSessionStreamTask) -> Void
-        }
-        set {
-            _streamTaskReadClosed = newValue
-        }
-    }
+    open var streamTaskReadClosed: ((URLSession, URLSessionStreamTask) -> Void)?
 
     /// Overrides default behavior for URLSessionStreamDelegate method `urlSession(_:writeClosedFor:)`.
-    @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
-    open var streamTaskWriteClosed: ((URLSession, URLSessionStreamTask) -> Void)? {
-        get {
-            return _streamTaskWriteClosed as? (URLSession, URLSessionStreamTask) -> Void
-        }
-        set {
-            _streamTaskWriteClosed = newValue
-        }
-    }
+    open var streamTaskWriteClosed: ((URLSession, URLSessionStreamTask) -> Void)?
 
     /// Overrides default behavior for URLSessionStreamDelegate method `urlSession(_:betterRouteDiscoveredFor:)`.
-    @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
-    open var streamTaskBetterRouteDiscovered: ((URLSession, URLSessionStreamTask) -> Void)? {
-        get {
-            return _streamTaskBetterRouteDiscovered as? (URLSession, URLSessionStreamTask) -> Void
-        }
-        set {
-            _streamTaskBetterRouteDiscovered = newValue
-        }
-    }
+    open var streamTaskBetterRouteDiscovered: ((URLSession, URLSessionStreamTask) -> Void)?
 
     /// Overrides default behavior for URLSessionStreamDelegate method `urlSession(_:streamTask:didBecome:outputStream:)`.
-    @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
-    open var streamTaskDidBecomeInputAndOutputStreams: ((URLSession, URLSessionStreamTask, InputStream, OutputStream) -> Void)? {
-        get {
-            return _streamTaskDidBecomeInputStream as? (URLSession, URLSessionStreamTask, InputStream, OutputStream) -> Void
-        }
-        set {
-            _streamTaskDidBecomeInputStream = newValue
-        }
-    }
-
-    var _streamTaskReadClosed: Any?
-    var _streamTaskWriteClosed: Any?
-    var _streamTaskBetterRouteDiscovered: Any?
-    var _streamTaskDidBecomeInputStream: Any?
+    open var streamTaskDidBecomeInputAndOutputStreams: ((URLSession, URLSessionStreamTask, InputStream, OutputStream) -> Void)?
 
 #endif
 
@@ -163,19 +126,12 @@ open class SessionDelegate: NSObject {
     var retrier: RequestRetrier?
     weak var sessionManager: SessionManager?
 
-    private var requests: [Int: Request] = [:]
-    private let lock = NSLock()
+    private var protectedRequests = Protector<[Int: Request]>([:])
 
     /// Access the task delegate for the specified task in a thread-safe manner.
     open subscript(task: URLSessionTask) -> Request? {
-        get {
-            lock.lock() ; defer { lock.unlock() }
-            return requests[task.taskIdentifier]
-        }
-        set {
-            lock.lock() ; defer { lock.unlock() }
-            requests[task.taskIdentifier] = newValue
-        }
+        get { return protectedRequests.read { $0[task.taskIdentifier] } }
+        set { protectedRequests.write { $0[task.taskIdentifier] = newValue } }
     }
 
     // MARK: Lifecycle
@@ -203,19 +159,17 @@ open class SessionDelegate: NSObject {
         #endif
 
         #if !os(watchOS)
-            if #available(iOS 9.0, macOS 10.11, tvOS 9.0, *) {
-                switch selector {
-                case #selector(URLSessionStreamDelegate.urlSession(_:readClosedFor:)):
-                    return streamTaskReadClosed != nil
-                case #selector(URLSessionStreamDelegate.urlSession(_:writeClosedFor:)):
-                    return streamTaskWriteClosed != nil
-                case #selector(URLSessionStreamDelegate.urlSession(_:betterRouteDiscoveredFor:)):
-                    return streamTaskBetterRouteDiscovered != nil
-                case #selector(URLSessionStreamDelegate.urlSession(_:streamTask:didBecome:outputStream:)):
-                    return streamTaskDidBecomeInputAndOutputStreams != nil
-                default:
-                    break
-                }
+            switch selector {
+            case #selector(URLSessionStreamDelegate.urlSession(_:readClosedFor:)):
+                return streamTaskReadClosed != nil
+            case #selector(URLSessionStreamDelegate.urlSession(_:writeClosedFor:)):
+                return streamTaskWriteClosed != nil
+            case #selector(URLSessionStreamDelegate.urlSession(_:betterRouteDiscoveredFor:)):
+                return streamTaskBetterRouteDiscovered != nil
+            case #selector(URLSessionStreamDelegate.urlSession(_:streamTask:didBecome:outputStream:)):
+                return streamTaskDidBecomeInputAndOutputStreams != nil
+            default:
+                break
             }
         #endif
 
@@ -442,16 +396,10 @@ extension SessionDelegate: URLSessionTaskDelegate {
 
             strongSelf[task]?.delegate.urlSession(session, task: task, didCompleteWithError: error)
 
-            var userInfo: [String: Any] = [Notification.Key.Task: task]
-
-            if let data = (strongSelf[task]?.delegate as? DataTaskDelegate)?.data {
-                userInfo[Notification.Key.ResponseData] = data
-            }
-
             NotificationCenter.default.post(
                 name: Notification.Name.Task.DidComplete,
                 object: strongSelf,
-                userInfo: userInfo
+                userInfo: [Notification.Key.Task: task]
             )
 
             strongSelf[task] = nil
@@ -680,7 +628,6 @@ extension SessionDelegate: URLSessionDownloadDelegate {
 
 #if !os(watchOS)
 
-@available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
 extension SessionDelegate: URLSessionStreamDelegate {
     /// Tells the delegate that the read side of the connection has been closed.
     ///

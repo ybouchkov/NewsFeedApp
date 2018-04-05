@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.7.1)
+  - Alamofire (5.0.0.beta.1)
   - IQKeyboardManager (5.0.8)
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
@@ -9,7 +9,7 @@ PODS:
   - TextFieldEffects (1.4.0)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `httpheaders`)
   - IQKeyboardManager
   - R.swift
   - R.swift.Library
@@ -17,8 +17,18 @@ DEPENDENCIES:
   - SWRevealViewController
   - TextFieldEffects
 
+EXTERNAL SOURCES:
+  Alamofire:
+    :branch: httpheaders
+    :git: https://github.com/Alamofire/Alamofire.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: 145321e079bbe689fd84212a9aef0b223f87eb18
+    :git: https://github.com/Alamofire/Alamofire.git
+
 SPEC CHECKSUMS:
-  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  Alamofire: 8dc618ab9e6a26d9d77559e4c35e59e56451e69e
   IQKeyboardManager: 266cb7b1d11f94a3e71229d77f960f9a1b538e5b
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
@@ -26,6 +36,6 @@ SPEC CHECKSUMS:
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: 4fdb0f7605e2a24f5002eb87e6dff2c18b352c02
+PODFILE CHECKSUM: dc2258bb413957d42ba30a71f49d757d83ef4853
 
 COCOAPODS: 1.4.0
